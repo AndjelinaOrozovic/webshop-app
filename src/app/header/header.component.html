@@ -1,0 +1,9 @@
+<!-- Toolbar -->
+<mat-toolbar color="primary" class="app-header">
+  <a mat-button class="header-name" routerLink=''>WebShopApp</a>
+  <span class="nav-tool-items">
+    <a mat-button class="active" routerLink="login" routerLinkActive="active-button" *ngIf="!signedIn">Login</a>
+    <a mat-button class="active" routerLink="register" routerLinkActive="active-button" *ngIf="!signedIn">Register</a>
+  </span>
+</mat-toolbar>
+

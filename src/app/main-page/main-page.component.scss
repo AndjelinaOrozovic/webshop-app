@@ -1,0 +1,57 @@
+@import "src/app/config/config.scss";
+
+.search-header {
+  display: flex;
+  justify-content: space-between;
+
+  &__header-title {
+    font-size: $font-size-h2;
+  }
+
+  &__header-elements-container {
+    margin-top: -12px;
+  }
+
+  &__select {
+    margin: -12px 0 0 4px;
+  }
+
+}
+
+.offer-card {
+  max-width: 300px;
+  max-height: 300px;
+  margin: 8px;
+}
+
+.offer-card:hover {
+  box-shadow: 0 8px 8px 8px rgba(0,0,0,.2), 0 8px 8px 0 rgba(0,0,0,.14), 0 8px 8px 0 rgba(0,0,0,.12) !important;
+  transform: translate3d(0,0,0);
+  transition: background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1);
+}
+
+.offer-photo {
+  min-width: 300px;
+  min-height: 199px;
+}
+
+.offer-header-image {
+  background-size: cover;
+}
+
+.offers-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.my-paginator {
+  margin-top: 16px;
+}
+
+.no-data {
+  height: 27%;
+  width: 27%;
+  margin: auto;
+  display: block;
+}
+
