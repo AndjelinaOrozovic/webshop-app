@@ -8,6 +8,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatListModule} from "@angular/material/list";
 
 const MATERIAL_MODULES = [
   MatPaginatorModule,
@@ -18,6 +19,8 @@ const MATERIAL_MODULES = [
   MatInputModule,
   MatIconModule,
   MatTooltipModule,
+  MatIconModule,
+  MatListModule
 ]
 
 @NgModule({

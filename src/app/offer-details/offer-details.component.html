@@ -1,0 +1,66 @@
+<div class="offer-details-container">
+  <mat-card class="offer-card" *ngIf="offer != null">
+    <mat-card-header>
+      <div class="header">
+      <div class="left-header">
+        <img *ngIf="offer.userAccount?.avatar != null" mat-card-avatar class="offer-header-image"
+             [src]="offer.userAccount.avatar" [matTooltip]="offer.userAccount.username" matTooltipPosition="above">
+        <img *ngIf="offer.userAccount?.avatar == null" mat-card-avatar class="offer-header-image"
+             src="https://t3.ftcdn.net/jpg/05/79/55/26/360_F_579552668_sZD51Sjmi89GhGqyF27pZcrqyi7cEYBH.jpg">
+        <div class="left-header-info">
+          <mat-card-title>{{offer.product.shortName}}</mat-card-title>
+          <mat-card-subtitle>{{offer.product.price}} $</mat-card-subtitle>
+        </div>
+      </div>
+      <div *ngIf="signedIn && !myOffer" class="right-header">
+        <span class="material-icons right-header-buy" (click)="purchaseOffer(offer)" [matTooltip]="'Buy'">shopping_bag</span>
+      </div>
+      </div>
+    </mat-card-header>
+    <img mat-card-img [src]="imageSources[currentIndex]" alt="Offer photo" class="offer-photo" fill>
+    <div *ngIf="imageSources.length > 1" class="button-container">
+      <button class="next-button" (click)="showNextImage()">Next image</button>
+    </div>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item class="mat-list-item"><b>Description:</b> {{offer.product.description}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item class="mat-list-item"><b>Is new:</b> {{offer.product.isNew ? 'Yes' : 'No'}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item class="mat-list-item"><b>Location:</b> {{offer.product.address}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item class="mat-list-item"><b>Contact:</b> {{offer.userAccount.mail}}</mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="comment-card">
+    <form [formGroup]="commentForm" method="post" *ngIf="comments">
+      <div *ngIf="comments.length; else noComments">
+        <ul class="comment-section" *ngFor="let comment of comments; trackBy: commentTrack">
+          <li
+            [ngClass]="comment?.userAccount.id === offer.userAccount.id ? 'comment author-comment' : 'comment user-comment'">
+            <div class="info">
+              <a href="#">{{comment.userAccount.username}}</a>
+              <span>{{comment.dateAndTime}}</span>
+            </div>
+            <a class="avatar">
+              <img [src]="comment.userAccount.avatar" alt="Profile Avatar" [title]="comment.userAccount.username"/>
+            </a>
+            <p>{{comment.content}}</p>
+          </li>
+        </ul>
+      </div>
+      <ng-template #noComments>
+        <p class="no-comments">{{noCommentsYet}}</p>
+      </ng-template>
+      <div *ngIf="signedIn" class="write-new">
+        <div class="write-new-wrapper">
+          <textarea formControlName="textAreaComment" placeholder="Write your comment here" name="comment"></textarea>
+          <button type="submit" (click)="leaveComment(commentForm.get('textAreaComment').value)"
+                  [disabled]="!commentForm.valid">Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+</div>

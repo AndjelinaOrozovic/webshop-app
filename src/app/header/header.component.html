@@ -1,9 +1,15 @@
-<!-- Toolbar -->
 <mat-toolbar color="primary" class="app-header">
   <a mat-button class="header-name" routerLink=''>WebShopApp</a>
   <span class="nav-tool-items">
     <a mat-button class="active" routerLink="login" routerLinkActive="active-button" *ngIf="!signedIn">Login</a>
     <a mat-button class="active" routerLink="register" routerLinkActive="active-button" *ngIf="!signedIn">Register</a>
   </span>
+  <div class="profile-wrapper" *ngIf="userAccount && signedIn">
+    <img routerLink="profile" *ngIf="userAccount?.avatar !== null" class="header-image"
+         [src]="userAccount.avatar" [matTooltip]="userAccount.username" matTooltipPosition="above">
+    <img routerLink="profile" *ngIf="userAccount?.avatar === null" class="header-image"
+         src="https://t3.ftcdn.net/jpg/05/79/55/26/360_F_579552668_sZD51Sjmi89GhGqyF27pZcrqyi7cEYBH.jpg">
+    <span (click)="logout()" class="material-icons logout-icon" [matTooltip]="logOutText">logout</span>
+  </div>
 </mat-toolbar>
 

@@ -13,13 +13,22 @@ import {AngularMaterialModule} from "./shared/angular-material/angular-material.
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {HeaderComponent} from "./header/header.component";
+import { OfferDetailsComponent } from './offer-details/offer-details.component';
+import {ToastrModule} from "ngx-toastr";
+import { ActivationComponent } from './activation/activation.component';
+import { ProfileComponent } from './profile/profile.component';
+import { PurchaseComponent } from './purchase/purchase.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HeaderComponent
+    HeaderComponent,
+    OfferDetailsComponent,
+    ActivationComponent,
+    ProfileComponent,
+    PurchaseComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +41,11 @@ import {HeaderComponent} from "./header/header.component";
     FlexLayoutModule,
     AngularMaterialModule,
     MainPageModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

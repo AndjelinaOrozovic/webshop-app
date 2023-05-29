@@ -1,50 +1,57 @@
-<mat-card class="registration-wrapper">
-  <mat-card-title class="registration-title">Registration</mat-card-title>
+<mat-card class="profile-wrapper">
+  <mat-card-title class="offer-title">Profile details</mat-card-title>
   <mat-card-content>
     <form [formGroup]="form">
       <p>
-        <mat-form-field class="registration-field">
+        <span class="profile-details-info"> Name:</span>
+        <mat-form-field class="offer-field">
           <input type="text" matInput placeholder="Name" formControlName="name">
         </mat-form-field>
       </p>
       <p>
-        <mat-form-field class="registration-field">
+        <span class="profile-details-info"> Surname:</span>
+        <mat-form-field class="offer-field">
           <input type="text" matInput placeholder="Surname" formControlName="surname">
         </mat-form-field>
       </p>
       <p>
-        <mat-form-field class="registration-field">
+        <span class="profile-details-info"> City:</span>
+        <mat-form-field class="offer-field">
           <input type="text" matInput placeholder="City" formControlName="city">
         </mat-form-field>
       </p>
       <p>
-        <mat-form-field class="registration-field">
-          <input type="text" matInput placeholder="Username" formControlName="username">
+        <span class="profile-details-info"> Username:</span>
+        <mat-form-field class="offer-field">
+          <input type="text" matInput placeholder="Username" formControlName="username" readonly>
         </mat-form-field>
       </p>
+      <span class="profile-details-info">Password:</span>
       <p>
-        <mat-form-field class="registration-field">
+        <mat-form-field class="offer-field">
           <input type="password" matInput placeholder="Password" formControlName="password">
         </mat-form-field>
       </p>
       <p>
-        <mat-form-field class="registration-field">
+        <mat-form-field class="offer-field">
           <input type="password" matInput placeholder="Confirm password" formControlName="passwordConfirm">
         </mat-form-field>
       </p>
       <p>
-        <mat-form-field class="registration-field">
+        <span class="profile-details-info"> Email:</span>
+        <mat-form-field class="offer-field">
           <input type="text" matInput placeholder="Email" formControlName="email">
           <mat-error>Wrong email format!</mat-error>
         </mat-form-field>
       </p>
       <p>
-        <mat-form-field class="registration-field">
+        <span class="profile-details-info"> Avatar:</span>
+        <mat-form-field class="offer-field">
           <input type="text" matInput placeholder="Avatar" formControlName="avatar">
         </mat-form-field>
       </p>
       <div class="button">
-        <button type="submit" class="button-submit" mat-button [disabled]="!form.valid" (click)="register()">Register</button>
+        <button type="submit" class="button-submit" mat-button [disabled]="!form.valid" (click)="save()">Save</button>
       </div>
 
     </form>

@@ -1,0 +1,337 @@
+@import "src/app/config/config.scss";
+
+.offer-photo {
+  min-width: 40%;
+  min-height: 199px;
+}
+
+.offer-header-image {
+  background-size: cover;
+}
+
+.offer-card {
+  max-width: 40%;
+  max-height: fit-content;
+  margin-right: 4px;
+}
+
+.left-header {
+  display: flex;
+
+  &-info {
+    margin-left: 8px;
+    line-height: 16px;
+  }
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.right-header-buy {
+  padding-top: 8px;
+  color: $color-blue-2;
+
+  &:hover {
+    cursor: pointer;
+    color: $color-blue-3;
+  }
+}
+
+
+.mat-list-item {
+  height: auto !important;
+}
+
+::ng-deep .mdc-list-item__primary-text {
+  text-overflow: unset !important;
+  white-space: unset !important;
+  overflow: unset !important;
+}
+
+::ng-deep .mdc-list-item__content {
+  text-overflow: unset !important;
+  white-space: unset !important;
+  overflow: unset !important;
+}
+
+.offer-details-container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 12px;
+}
+
+
+.comment-section{
+  list-style: none;
+  padding: 10px;
+}
+
+.comment{
+  display: flex;
+  border-radius: 3px;
+  flex-wrap: wrap;
+}
+
+.comment.user-comment,
+.comment.author-comment{
+  color:  $color-gray-2;
+}
+
+.mat-mdc-card-subtitle {
+  line-height: 8px;
+}
+
+.mat-mdc-card-title {
+  line-height: 28px;
+}
+
+/* User and time info */
+
+.comment .info{
+  width: 17%;
+  margin-right: 3%;
+}
+
+.comment.user-comment .info{
+  text-align: right;
+}
+
+.comment.author-comment .info{
+  text-align: right;
+}
+
+
+.comment .info a{	/* User name */
+  display: block;
+  text-decoration: none;
+  color: $color-gray-2;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px 0 3px 0;
+}
+
+.comment .info span{	/* Time */
+  font-size: 11px;
+  color:  $color-gray-2;
+}
+
+
+/* The user avatar */
+
+.comment .avatar{
+  width: 8%;
+}
+
+.comment.user-comment .avatar{
+  padding: 10px 18px 0 3px;
+}
+
+.comment.author-comment .avatar{
+  padding: 10px 18px 0 3px;
+}
+
+.comment .avatar img{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-bottom: 16px;
+  object-fit: cover;
+}
+
+.comment.user-comment .avatar img{
+  float: right;
+}
+
+/* The comment text */
+
+.comment p{
+  line-height: 1.5;
+  padding: 18px 22px;
+  width: 50%;
+  position: relative;
+  word-wrap: break-word;
+}
+
+.comment.user-comment p{
+  background-color: $color-gray-1;
+}
+
+.comment.author-comment p {
+  background-color: $color-blue-1;
+}
+
+.user-comment p:after{
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: $color-gray-1;
+  border: 2px solid $color-gray-3;
+  left: -8px;
+  top: 18px;
+}
+
+
+/* Comment form */
+
+.write-new{
+  width: 80%;
+  margin: 0 0 8px 44px;
+
+  &-wrapper {
+    display: flex;
+  }
+}
+
+.write-new textarea{
+  color:  #444;
+  font: inherit;
+
+  outline: 0;
+  border-radius: 3px;
+  border: 1px solid $color-gray-3;
+  background-color:  $color-gray-1;
+  box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.06);
+  overflow: auto;
+
+  width: 100%;
+  padding: 15px 20px;
+  justify-self: left;
+  margin-top: 4px;
+}
+
+.write-new img{
+  border-radius: 50%;
+  margin-top: 15px;
+}
+
+.write-new button{
+  float:right;
+  background-color: $color-blue-2;
+  box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+  border: 0;
+  color: $color-white;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.write-new button:hover {
+  background-color: $color-blue-3;
+}
+
+.write-new button:disabled {
+  background-color: $color-blue-2;
+  color: $color-white;
+}
+
+.next-button {
+  background-color: $color-blue-2;
+  box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+  border: 0;
+  color: $color-white;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 4px;
+  width: 92px;
+}
+
+.next-button:hover {
+  background-color: $color-blue-3;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.comment-card {
+  width: 40%;
+}
+
+.no-comments {
+  line-height: 1.5;
+  padding: 18px 22px;
+  width: 50%;
+  position: relative;
+  word-wrap: break-word;
+  color: $color-gray-2;
+}
+
+
+/* Responsive styles */
+
+@media (max-width: 800px){
+  /* Make the paragraph in the comments take up the whole width,
+  forcing the avatar and user info to wrap to the next line*/
+  .comment p{
+    width: 100%;
+  }
+
+  /* Reverse the order of elements in the user comments,
+  so that the avatar and info appear after the text. */
+  .comment.user-comment .info,
+  .comment.author-comment .info {
+    order: 3;
+    text-align: left;
+  }
+
+  .write-new-wrapper {
+    display: block;
+    width: 60%;
+  }
+
+  .comment.user-comment .avatar,
+  .comment.author-comment .avatar {
+    order: 2;
+  }
+
+  .comment.user-comment p,
+  .comment.author-comment p {
+    order: 1;
+  }
+
+  .comment-section {
+    margin-top: 10px;
+  }
+
+  .comment .info{
+    width: auto;
+  }
+
+  .comment .info a{
+    padding-top: 15px;
+  }
+
+  .comment.user-comment .avatar,
+  .comment.author-comment .avatar
+  {
+    padding: 15px 10px 0 18px;
+    width: auto;
+  }
+
+  .comment.user-comment p:after,
+  .comment.author-comment p:after
+  {
+    width: 12px;
+    height: 12px;
+    top: initial;
+    left: 28px;
+    bottom: -6px;
+  }
+
+  .write-new{
+    width: 100%;
+  }
+}
+
+

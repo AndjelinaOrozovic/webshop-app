@@ -3,10 +3,9 @@
 :host {
   display: flex;
   justify-content: center;
-  margin: 100px 0;
 }
 
-.login-title {
+.purchase-title {
   padding: 12px;
 }
 
@@ -24,6 +23,7 @@ mat-card-content {
 .button {
   display: flex;
   justify-content: flex-end;
+  margin-top: 16px;
 
   &-submit, &-submit:disabled {
     color: $color-white;

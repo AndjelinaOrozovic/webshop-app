@@ -3,7 +3,10 @@ import {RouterModule, Routes} from '@angular/router';
 import {MainPageComponent} from "./main-page/main-page.component";
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
-import {AppComponent} from "./app.component";
+import {OfferDetailsComponent} from "./offer-details/offer-details.component";
+import {ActivationComponent} from "./activation/activation.component";
+import {ProfileComponent} from "./profile/profile.component";
+import {PurchaseComponent} from "./purchase/purchase.component";
 
 const routes: Routes = [
   {
@@ -17,6 +20,22 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'offer-details/:id',
+    component: OfferDetailsComponent
+  },
+  {
+    path: 'activation',
+    component: ActivationComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
+  },
+  {
+    path: 'purchase',
+    component: PurchaseComponent
   },
 
   {

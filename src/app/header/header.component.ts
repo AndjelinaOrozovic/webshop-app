@@ -1,22 +1,40 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit} from '@angular/core';
+import {AuthenticationService} from "../shared/services/authentication.service";
+import {combineLatest, Subscription} from "rxjs";
+import {IUserAccount} from "../shared/models/IUserAccount";
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit, OnDestroy {
 
-  public signedIn = false;
+  signedIn = false;
+  userAccount: IUserAccount = null;
+  subs = new Subscription();
+  logOutText: string = 'Log out';
 
-  constructor() {
+  constructor(private authenticationService: AuthenticationService) {
   }
 
   ngOnInit(): void {
-    this.signedIn = false; //implementirati auth service
+    let signedObs = this.authenticationService.isSignedIn$;
+    let activatedObs = this.authenticationService.isActivated$;
+    let activeUserObs = this.authenticationService.activeUser$;
+    this.subs.add(
+      combineLatest([signedObs, activatedObs, activeUserObs]).subscribe(data => {
+        this.signedIn = data[0] && data[1];
+        this.userAccount = data[2];
+      }));
   }
 
   public logout() {
-    //implementirati logout
+    this.authenticationService.logout();
   }
+
+  ngOnDestroy() {
+    this.subs.unsubscribe();
+  }
+
 }

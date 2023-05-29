@@ -1,6 +1,5 @@
-<div class="search-header">
+<form [formGroup]="formFilters" class="search-header">
     <div>
-<!--      <label class="search-header__header-title">{{ headerTitle }}</label>-->
       <mat-form-field class="search-header__select">
         <mat-label>Categories</mat-label
         >
@@ -8,12 +7,12 @@
           panelClass="onboarding-container__mat-select"
           [disableOptionCentering]="true"
           placeholder="Categories"
-          [(ngModel)] = "selectedValue"
+          formControlName="selectedFilter"
         >
           <mat-option
             *ngFor="let option of categories; trackBy: optionTrack"
             [value]="option.id"
-            (click)="selectCategory(selectedValue)"
+            (click)="selectCategory(formFilters.get('selectedFilter').value)"
           >
             {{ option.name }}
           </mat-option>
@@ -23,24 +22,24 @@
     <div class="search-header__header-elements-container">
       <mat-form-field appearance="fill">
         <mat-label>Search</mat-label>
-        <input matInput [(ngModel)]="searchTerm" (keyup)="filterOffers(searchTerm)" />
+        <input matInput formControlName="searchedFilter" />
         <mat-icon matPrefix>search</mat-icon>
       </mat-form-field>
     </div>
-</div>
+</form>
 
 <div>
 
   <div class="offers-container" *ngIf="offers?.length; else noData">
     <div class="offers-mat-cards" *ngFor="let offer of dataSource; trackBy: pageItemTrack">
-      <mat-card class="offer-card">
+      <mat-card class="offer-card" (click)="openOfferDetails(offer)">
         <mat-card-header>
           <img *ngIf="offer.userAccount.avatar != null" mat-card-avatar class="offer-header-image" [src]="offer.userAccount.avatar" [matTooltip]="offer.userAccount.username" matTooltipPosition="above">
           <img *ngIf="offer.userAccount.avatar == null" mat-card-avatar class="offer-header-image" src="https://t3.ftcdn.net/jpg/05/79/55/26/360_F_579552668_sZD51Sjmi89GhGqyF27pZcrqyi7cEYBH.jpg">
           <mat-card-title>{{offer.product.shortName}}</mat-card-title>
           <mat-card-subtitle>{{offer.product.price}} $</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-img [src]="offer.product.picture" alt="Offer photo" class="offer-photo" fill>
+        <img mat-card-img [src]="offer.product.images[0].url" alt="Offer photo" class="offer-photo" fill>
         <mat-card-content>
           <p>
             {{offer.product.description}}

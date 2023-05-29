@@ -1,0 +1,47 @@
+<mat-card class="purchase-wrapper">
+  <mat-card-title class="purchase-title">Buy product</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="purchaseForm">
+      <p>
+        <mat-form-field class="purchase-field">
+          <input type="text" matInput readonly placeholder="Product" formControlName="productName">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="purchase-field">
+          <input type="text" matInput readonly placeholder="Price" formControlName="productPrice">
+        </mat-form-field>
+      </p>
+      <mat-form-field>
+        <mat-label>Payment type</mat-label>
+        <mat-select [value]="currentPaymentType.content"
+                    (selectionChange)="onPaymentTypeChange($event)"
+                    formControlName="paymentType"
+                    required
+        >
+          <mat-select-trigger>
+            {{currentPaymentType.value}}
+          </mat-select-trigger>
+          <mat-option *ngFor="let market of paymentTypes" [value]="market.content">
+            {{market.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <p *ngIf="isCardPayment">
+        <mat-form-field class="purchase-field">
+          <input type="text" matInput placeholder="Card number" formControlName="card" [minlength]="16" [maxlength]="16" pattern="[0-9]+">
+          <mat-error>Please insert correct card number!</mat-error>
+        </mat-form-field>
+      </p>
+      <div class="button">
+        <button type="submit" class="button-submit" mat-button [disabled]="!purchaseForm.valid" (click)="buyProduct()">
+          Buy
+        </button>
+      </div>
+
+    </form>
+  </mat-card-content>
+</mat-card>
+
+

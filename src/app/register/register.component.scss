@@ -1,0 +1,59 @@
+
+@import "src/app/config/config.scss";
+
+:host {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.offer-title {
+  padding: 12px;
+}
+
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+
+  &-submit, &-submit:disabled {
+    color: $color-white;
+    background-color: $color-blue-2;
+  }
+
+  &-submit:hover {
+    color: $color-white;
+    background-color: $color-blue-3;
+  }
+
+}
+
+.profile-wrapper {
+  width: 444px;
+}
+
+.offer-field {
+  width: 416px;
+}
+
+@media (max-width: 800px) {
+
+  .profile-wrapper {
+    width: unset;
+  }
+
+  .offer-field {
+    width: unset;
+  }
+
+}
