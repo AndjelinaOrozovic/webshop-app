@@ -18,6 +18,10 @@ import {ToastrModule} from "ngx-toastr";
 import { ActivationComponent } from './activation/activation.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PurchaseComponent } from './purchase/purchase.component';
+import { NewOfferComponent } from './new-offer/new-offer.component';
+import { MyPurchasesComponent } from './my-purchases/my-purchases.component';
+import { MyOffersComponent } from './my-offers/my-offers.component';
+import { SendMessageComponent } from './send-message/send-message.component';
 
 @NgModule({
   declarations: [
@@ -28,25 +32,29 @@ import { PurchaseComponent } from './purchase/purchase.component';
     OfferDetailsComponent,
     ActivationComponent,
     ProfileComponent,
-    PurchaseComponent
+    PurchaseComponent,
+    NewOfferComponent,
+    MyPurchasesComponent,
+    MyOffersComponent,
+    SendMessageComponent
   ],
-  imports: [
-    BrowserModule,
-    CommonModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    FlexLayoutModule,
-    AngularMaterialModule,
-    MainPageModule,
-    ToastrModule.forRoot({
-      timeOut: 3000,
-      positionClass: 'toast-top-right',
-      preventDuplicates: true,
-    })
-  ],
+    imports: [
+        BrowserModule,
+        CommonModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        FlexLayoutModule,
+        AngularMaterialModule,
+        MainPageModule,
+        ToastrModule.forRoot({
+            timeOut: 3000,
+            positionClass: 'toast-top-right',
+            preventDuplicates: true,
+        }),
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,59 @@
+<div class="offer-wrapper">
+  <form [formGroup]="formFilters" class="select-header">
+    <div>
+      <mat-form-field class="select-header">
+        <mat-label>Offer type</mat-label>
+        <mat-select
+          placeholder="Offer type"
+          formControlName="selectedFilter"
+        >
+          <mat-option
+            *ngFor="let option of categories; trackBy: optionTrack"
+            [value]="option.id"
+            (click)="selectCategory(formFilters.get('selectedFilter').value)"
+          >
+            {{ option.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </form>
+  <div class="my-offers-header"><h1>My offers</h1></div>
+</div>
+<div class="offer-container" *ngIf="myOffers?.length; else noData">
+  <div class="offer-mat-cards" *ngFor="let offer of dataSource; trackBy: pageItemTrack">
+    <mat-card class="offer-card">
+      <mat-card-header>
+        <div class="header">
+          <div class="left-header">
+            <div class="left-header-info">
+              <mat-card-title>{{offer.product.shortName}}</mat-card-title>
+              <mat-card-subtitle>{{offer.product.price}} $</mat-card-subtitle>
+            </div>
+          </div>
+          <div *ngIf="signedIn" class="right-header">
+            <span class="status" *ngIf="offer.isActive; else inactive">Active</span>
+            <ng-template #inactive>
+              <span class="status">Finished</span>
+            </ng-template>
+            <span class="material-icons right-header-icon" (click)="deleteOffer(offer)"
+                  [matTooltip]="'Delete'">delete</span>
+          </div>
+        </div>
+      </mat-card-header>
+      <img mat-card-img [src]="offer.product.images[0]?.url" alt="offer photo" class="offer-photo" fill>
+      <mat-card-content>
+        <p>Category: {{offer.product.category.name}}</p>
+        <p>Date and time: {{offer.dateAndTime}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<ng-template #noData>
+  <img class="no-data" src="https://img.freepik.com/free-vector/no-data-concept-illustration_114360-536.jpg?w=2000">
+</ng-template>
+<mat-paginator class="my-paginator" #paginator pageSize="pageSize" hidePageSize="true" showFirstLastButtons
+               [length]="totalItems" [pageSizeOptions]="[pageSize]" [pageIndex]="currentPage"
+               (page)="pageChanged($event)">
+</mat-paginator>

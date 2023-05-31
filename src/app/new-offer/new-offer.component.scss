@@ -1,4 +1,3 @@
-
 @import "src/app/config/config.scss";
 
 :host {
@@ -7,7 +6,7 @@
   margin: 0;
 }
 
-.registration-title {
+.new-offer-title {
   padding: 12px;
 }
 
@@ -38,21 +37,21 @@ mat-card-content {
 
 }
 
-.registration-wrapper {
+.new-offer-wrapper {
   width: 444px;
 }
 
-.registration-field {
+.new-offer-field, .category__select {
   width: 416px;
 }
 
 @media (max-width: 800px) {
 
-  .registration-wrapper {
+  .new-offer-wrapper {
     width: unset;
   }
 
-  .registration-field {
+  .new-offer-field, .category__select {
     width: unset;
   }
 

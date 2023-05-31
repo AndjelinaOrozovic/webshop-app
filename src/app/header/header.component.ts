@@ -14,6 +14,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userAccount: IUserAccount = null;
   subs = new Subscription();
   logOutText: string = 'Log out';
+  newOfferText: string = 'Add new offer';
+  showPurchases: string = 'My purchases';
+  showOffers: string = 'My offers';
+  customerSupport: string = 'Contact customer support';
 
   constructor(private authenticationService: AuthenticationService) {
   }

@@ -38,8 +38,7 @@ export class PurchaseComponent implements OnInit, AfterContentChecked, OnDestroy
       content: 'card',
     },
   ];
-
-  public currentPaymentType: IPaymentType = this.paymentTypes[0];
+  currentPaymentType: IPaymentType = this.paymentTypes[0];
 
   constructor(private _formBuilder: FormBuilder,
               private _ref: ChangeDetectorRef,
@@ -83,6 +82,10 @@ export class PurchaseComponent implements OnInit, AfterContentChecked, OnDestroy
     } else {
       this.purchaseForm.get('card').clearValidators();
     }
+  }
+
+  optionTrack(index: number, item: string): string {
+    return item;
   }
 
   buyProduct() {

@@ -44,7 +44,7 @@ body {
   margin-top: 20px;
 }
 
-.logout-icon {
+.logout-icon, .add-icon, .offers-icon, .purchases-icon, .customer-support-icon {
   margin: 28px 0 0 8px;
 }
 
@@ -52,7 +52,7 @@ body {
   display: flex;
 }
 
-.logout-icon:hover {
+.logout-icon:hover, .add-icon:hover, .offers-icon:hover, .purchases-icon, .customer-support-icon {
   cursor: pointer;
 }
 

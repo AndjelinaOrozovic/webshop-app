@@ -9,6 +9,8 @@ import {formatDate} from "@angular/common";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {catchError, Observable, Subscription, switchMap} from "rxjs";
 import {AuthenticationService} from "../shared/services/authentication.service";
+import {IAttributeAndValue} from "../shared/models/IAttributeAndValue";
+import {ProductsService} from "../shared/services/products.service";
 
 @Component({
   selector: 'app-offer-details',
@@ -31,11 +33,13 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
   viewer: any;
   noCommentsYet: string = 'No comments yet!';
   myOffer: boolean = false;
+  attributes: IAttributeAndValue[] = [];
 
   constructor(private offersService: OffersService,
               private commentsService: CommentsService,
               private authenticationService: AuthenticationService,
-              private router: Router,
+              private productsService: ProductsService,
+              private _router: Router,
               private _route: ActivatedRoute,
               private _formBuilder: FormBuilder,
               private _toastService: ToastrService,
@@ -51,14 +55,25 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
       this.offersService.getOfferDetails(+offerId).subscribe(
         res => {
           this.offer = res;
+          if (res.product.id) {
+            this.getAttributesAndValues(res.product.id);
+          }
           this.imageSources = res.product.images.map(res => res.url);
+          if (this.authenticationService.activeUser) {
+            this.myOffer = this.authenticationService.activeUser.id === this.offer.userAccount.id;
+          }
         }
       ));
     this.getComments(+offerId);
     this.signedIn = this.authenticationService.signedIn && this.authenticationService.activated;
-    if(this.authenticationService.activeUser) {
-      this.myOffer = this.authenticationService.activeUser.id === +offerId;
-    }
+
+  }
+
+  getAttributesAndValues(idProduct: number): void {
+    this.subs.add(
+      this.productsService.getAttributesAndValues(idProduct).subscribe(
+        res => this.attributes = res
+      ));
   }
 
   showNextImage() {
@@ -110,11 +125,29 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
   }
 
   purchaseOffer(offer: IOffer) {
-      this.offersService.setOffer(offer);
-      this.router.navigate(['purchase']);
+    this.offersService.setOffer(offer);
+    this._router.navigate(['purchase']);
+  }
+
+  deleteOffer(offer: IOffer) {
+    let deletedOffer = offer;
+    deletedOffer.isActive = false;
+    deletedOffer.isDeleted = true;
+    this.subs.add(
+      this.offersService.updateOffer(deletedOffer).subscribe({
+        next: () => {
+          this._toastService.success("Offer is deleted!");
+          this._router.navigate(['']);
+        },
+        error: () => {
+          this._toastService.error("Error while deleting offer! Please try again!");
+        }
+      })
+    );
   }
 
   ngOnDestroy() {
     this.subs.unsubscribe();
   }
+
 }

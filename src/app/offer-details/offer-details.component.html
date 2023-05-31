@@ -2,19 +2,24 @@
   <mat-card class="offer-card" *ngIf="offer != null">
     <mat-card-header>
       <div class="header">
-      <div class="left-header">
-        <img *ngIf="offer.userAccount?.avatar != null" mat-card-avatar class="offer-header-image"
-             [src]="offer.userAccount.avatar" [matTooltip]="offer.userAccount.username" matTooltipPosition="above">
-        <img *ngIf="offer.userAccount?.avatar == null" mat-card-avatar class="offer-header-image"
-             src="https://t3.ftcdn.net/jpg/05/79/55/26/360_F_579552668_sZD51Sjmi89GhGqyF27pZcrqyi7cEYBH.jpg">
-        <div class="left-header-info">
-          <mat-card-title>{{offer.product.shortName}}</mat-card-title>
-          <mat-card-subtitle>{{offer.product.price}} $</mat-card-subtitle>
+        <div class="left-header">
+          <img *ngIf="offer.userAccount?.avatar != null" mat-card-avatar class="offer-header-image"
+               [src]="offer.userAccount.avatar" [matTooltip]="offer.userAccount.username" matTooltipPosition="above">
+          <img *ngIf="offer.userAccount?.avatar == null" mat-card-avatar class="offer-header-image"
+               src="https://t3.ftcdn.net/jpg/05/79/55/26/360_F_579552668_sZD51Sjmi89GhGqyF27pZcrqyi7cEYBH.jpg">
+          <div class="left-header-info">
+            <mat-card-title>{{offer.product.shortName}}</mat-card-title>
+            <mat-card-subtitle>{{offer.product.price}} $</mat-card-subtitle>
+          </div>
         </div>
-      </div>
-      <div *ngIf="signedIn && !myOffer" class="right-header">
-        <span class="material-icons right-header-buy" (click)="purchaseOffer(offer)" [matTooltip]="'Buy'">shopping_bag</span>
-      </div>
+        <div *ngIf="signedIn && !myOffer" class="right-header">
+          <span class="material-icons right-header-icon" (click)="purchaseOffer(offer)"
+                [matTooltip]="'Buy'">shopping_bag</span>
+        </div>
+        <div *ngIf="signedIn && myOffer" class="right-header">
+          <span class="material-icons right-header-icon" (click)="deleteOffer(offer)"
+                [matTooltip]="'Delete'">delete</span>
+        </div>
       </div>
     </mat-card-header>
     <img mat-card-img [src]="imageSources[currentIndex]" alt="Offer photo" class="offer-photo" fill>
@@ -30,6 +35,10 @@
         <mat-list-item class="mat-list-item"><b>Location:</b> {{offer.product.address}}</mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item class="mat-list-item"><b>Contact:</b> {{offer.userAccount.mail}}</mat-list-item>
+        <div *ngFor="let attribute of attributes">
+          <mat-divider></mat-divider>
+          <mat-list-item class="mat-list-item"><b>{{attribute.attributeName}}:</b> {{attribute.attributeValue}}</mat-list-item>
+        </div>
       </mat-list>
     </mat-card-content>
   </mat-card>

@@ -21,6 +21,6 @@ export class PurchasesService {
   }
 
   findPurchaseByUserId(id: number): Observable<IPurchase[]> {
-    return this.http.get<IPurchase[]>(`${this.baseUrl}/${id}`);
+    return this.http.get<IPurchase[]>(`${this.baseUrl}/idUser/${id}`);
   }
 }

@@ -1,0 +1,89 @@
+@import "src/app/config/config.scss";
+
+.offer-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.offer-photo {
+  min-width: 300px;
+  height: 199px;
+  max-height: 199px;
+  min-height: 199px;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.left-header {
+  display: flex;
+
+  &-info {
+    margin-top: -8px;
+  }
+}
+
+.right-header-icon {
+  padding-top: 8px;
+  color: $color-blue-2;
+
+  &:hover {
+    cursor: pointer;
+    color: $color-blue-3;
+  }
+}
+
+
+.no-data {
+  height: 27%;
+  width: 27%;
+  margin: auto;
+  display: block;
+}
+
+.offer-card {
+  max-width: 300px;
+  height: 332px;
+  margin: 8px;
+}
+
+.offer-card:hover {
+  box-shadow: 0 8px 8px 8px rgba(0, 0, 0, .2), 0 8px 8px 0 rgba(0, 0, 0, .14), 0 8px 8px 0 rgba(0, 0, 0, .12) !important;
+  transform: translate3d(0, 0, 0);
+  transition: background .4s cubic-bezier(.25, .8, .25, 1), box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
+  cursor: pointer;
+}
+
+.my-paginator {
+  margin-top: 16px;
+}
+
+.offer-wrapper {
+  margin-top: -22px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.my-offers-header {
+  text-align: center;
+  color: $color-blue-3;
+  margin: 12px;
+}
+
+.right-header {
+  display: flex;
+}
+
+.select-header{
+  margin: 4px 0 0 4px;
+}
+
+.status {
+  margin-top: 10px;
+  margin-right: 3px;
+}

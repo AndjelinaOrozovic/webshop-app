@@ -1,11 +1,11 @@
-<form [formGroup]="formFilters" class="search-header">
+<div class="main-page-background">
+  <form [formGroup]="formFilters" class="search-header">
     <div>
       <mat-form-field class="search-header__select">
-        <mat-label>Categories</mat-label
+        <mat-label>Categories
+        </mat-label
         >
         <mat-select
-          panelClass="onboarding-container__mat-select"
-          [disableOptionCentering]="true"
           placeholder="Categories"
           formControlName="selectedFilter"
         >
@@ -22,36 +22,41 @@
     <div class="search-header__header-elements-container">
       <mat-form-field appearance="fill">
         <mat-label>Search</mat-label>
-        <input matInput formControlName="searchedFilter" />
+        <input matInput formControlName="searchedFilter"/>
         <mat-icon matPrefix>search</mat-icon>
       </mat-form-field>
     </div>
-</form>
+  </form>
 
-<div>
+  <div>
 
-  <div class="offers-container" *ngIf="offers?.length; else noData">
-    <div class="offers-mat-cards" *ngFor="let offer of dataSource; trackBy: pageItemTrack">
-      <mat-card class="offer-card" (click)="openOfferDetails(offer)">
-        <mat-card-header>
-          <img *ngIf="offer.userAccount.avatar != null" mat-card-avatar class="offer-header-image" [src]="offer.userAccount.avatar" [matTooltip]="offer.userAccount.username" matTooltipPosition="above">
-          <img *ngIf="offer.userAccount.avatar == null" mat-card-avatar class="offer-header-image" src="https://t3.ftcdn.net/jpg/05/79/55/26/360_F_579552668_sZD51Sjmi89GhGqyF27pZcrqyi7cEYBH.jpg">
-          <mat-card-title>{{offer.product.shortName}}</mat-card-title>
-          <mat-card-subtitle>{{offer.product.price}} $</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-img [src]="offer.product.images[0].url" alt="Offer photo" class="offer-photo" fill>
-        <mat-card-content>
-          <p>
-            {{offer.product.description}}
-          </p>
-        </mat-card-content>
-      </mat-card>
+    <div class="offers-container" *ngIf="offers?.length; else noData">
+      <div class="offers-mat-cards" *ngFor="let offer of dataSource; trackBy: pageItemTrack">
+        <mat-card class="offer-card" (click)="openOfferDetails(offer)">
+          <mat-card-header>
+            <img *ngIf="offer.userAccount.avatar != null" mat-card-avatar class="offer-header-image"
+                 [src]="offer.userAccount.avatar" [matTooltip]="offer.userAccount.username" matTooltipPosition="above">
+            <img *ngIf="offer.userAccount.avatar == null" mat-card-avatar class="offer-header-image"
+                 src="https://t3.ftcdn.net/jpg/05/79/55/26/360_F_579552668_sZD51Sjmi89GhGqyF27pZcrqyi7cEYBH.jpg">
+            <mat-card-title>{{offer.product.shortName}}</mat-card-title>
+            <mat-card-subtitle>{{offer.product.price}} $</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-img [src]="offer.product.images[0]?.url" alt="Offer photo" class="offer-photo" fill>
+          <mat-card-content>
+            <p>
+              {{offer.product.description}}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
     </div>
-  </div>
-  <ng-template #noData>
-    <img class="no-data" src="https://img.freepik.com/free-vector/no-data-concept-illustration_114360-536.jpg?w=2000">
-  </ng-template>
+    <ng-template #noData>
+      <img class="no-data" src="https://img.freepik.com/free-vector/no-data-concept-illustration_114360-536.jpg?w=2000">
+    </ng-template>
 
-  <mat-paginator class="my-paginator" #paginator  pageSize="pageSize" hidePageSize="true" showFirstLastButtons [length]="totalItems" [pageSizeOptions]="[pageSize]" [pageIndex]="currentPage" (page)="pageChanged($event)">
-  </mat-paginator>
+    <mat-paginator class="my-paginator" #paginator pageSize="pageSize" hidePageSize="true" showFirstLastButtons
+                   [length]="totalItems" [pageSizeOptions]="[pageSize]" [pageIndex]="currentPage"
+                   (page)="pageChanged($event)">
+    </mat-paginator>
+  </div>
 </div>

@@ -19,10 +19,10 @@
                     formControlName="paymentType"
                     required
         >
-          <mat-select-trigger>
-            {{currentPaymentType.value}}
-          </mat-select-trigger>
-          <mat-option *ngFor="let market of paymentTypes" [value]="market.content">
+<!--          <mat-select-trigger>-->
+<!--            {{currentPaymentType.value}}-->
+<!--          </mat-select-trigger>-->
+          <mat-option *ngFor="let market of paymentTypes; trackBy: optionTrack" [value]="market.content" >
             {{market.value}}
           </mat-option>
         </mat-select>

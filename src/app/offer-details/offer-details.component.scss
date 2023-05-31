@@ -3,6 +3,7 @@
 .offer-photo {
   min-width: 40%;
   min-height: 199px;
+  max-height: 340px;
 }
 
 .offer-header-image {
@@ -30,7 +31,7 @@
   justify-content: space-between;
 }
 
-.right-header-buy {
+.right-header-icon {
   padding-top: 8px;
   color: $color-blue-2;
 

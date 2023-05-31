@@ -1,5 +1,8 @@
-
 @import "src/app/config/config.scss";
+
+.send-message-labels {
+  color: $color-blue-3;
+}
 
 :host {
   display: flex;
@@ -7,7 +10,7 @@
   margin: 0;
 }
 
-.registration-title {
+.send-message-title {
   padding: 12px;
 }
 
@@ -38,21 +41,25 @@ mat-card-content {
 
 }
 
-.registration-wrapper {
+.send-message-wrapper {
   width: 444px;
 }
 
-.registration-field {
+.send-message-field {
   width: 416px;
+}
+
+.send-message-text {
+  min-height: 84px;
 }
 
 @media (max-width: 800px) {
 
-  .registration-wrapper {
+  .send-message-wrapper {
     width: unset;
   }
 
-  .registration-field {
+  .send-message-field {
     width: unset;
   }
 

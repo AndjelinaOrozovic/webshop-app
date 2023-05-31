@@ -1,5 +1,10 @@
 @import "src/app/config/config.scss";
 
+.main-page-background {
+  background-color: $color-white;
+  margin-top: -16px;
+}
+
 .search-header {
   display: flex;
   justify-content: space-between;
@@ -9,11 +14,11 @@
   }
 
   &__header-elements-container {
-    margin-top: -12px;
+    margin-right: 16px;
   }
 
   &__select {
-    margin: -12px 0 0 4px;
+    margin: 0 0 0 8px;
   }
 
 }
@@ -33,6 +38,8 @@
 
 .offer-photo {
   min-width: 300px;
+  height: 199px;
+  max-height: 199px;
   min-height: 199px;
 }
 
@@ -43,6 +50,7 @@
 .offers-container {
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .my-paginator {

@@ -9,6 +9,10 @@
          [src]="userAccount.avatar" [matTooltip]="userAccount.username" matTooltipPosition="above">
     <img routerLink="profile" *ngIf="userAccount?.avatar === null" class="header-image"
          src="https://t3.ftcdn.net/jpg/05/79/55/26/360_F_579552668_sZD51Sjmi89GhGqyF27pZcrqyi7cEYBH.jpg">
+    <span routerLink="my-purchases" class="material-icons purchases-icon" [matTooltip]="showPurchases">shopping_cart</span>
+    <span routerLink="new-offer" class="material-icons add-icon" [matTooltip]="newOfferText">add_box</span>
+    <span routerLink="my-offers" class="material-icons offers-icon" [matTooltip]="showOffers">app_registration</span>
+    <span routerLink="send-message" class="material-icons customer-support-icon" [matTooltip]="customerSupport">mail</span>
     <span (click)="logout()" class="material-icons logout-icon" [matTooltip]="logOutText">logout</span>
   </div>
 </mat-toolbar>

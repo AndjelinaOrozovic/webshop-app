@@ -42,7 +42,15 @@ export class OffersService {
 
   public updateOffer(offer: IOffer): Observable<IOffer> {
     return this.http.put<IOffer>(`${this.baseUrl}/${offer.id}`, offer);
-    }
+  }
+
+  public insertOffer(offer: IOffer): Observable<IOffer> {
+    return this.http.post<IOffer>(this.baseUrl, offer);
+  }
+
+  public getOffersByUserId(id: number): Observable<IOffer[]> {
+    return this.http.get<IOffer[]>(`${this.baseUrl}/idUser/${id}`);
+  }
 
   public setOffer(offer: IOffer): void {
     this.dataSource.next(offer);
