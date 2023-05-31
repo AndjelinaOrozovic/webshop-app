@@ -55,7 +55,9 @@ export class MainPageComponent implements OnInit, OnDestroy {
       this.categoriesService.getAll().subscribe(
         res => {
           this.categories = res;
+          this.categories.forEach(el => el.name = this.setName(el));
           this.categories.unshift({id: 0, name: 'All', parentCategory: null, isDeleted: false});
+          this.categories.sort((a, b) => a.name.localeCompare(b.name));
           this.formFilters.get('selectedFilter').setValue(this.selectedOption.id);
         }
       )
@@ -168,6 +170,14 @@ export class MainPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subs.unsubscribe();
+  }
+
+  setName(option: ICategory): string {
+    if(option.parentCategory) {
+      return option.parentCategory.name + ' > ' + option.name;
+    } else {
+      return option.name;
+    }
   }
 }
 
