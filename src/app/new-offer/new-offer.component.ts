@@ -1,9 +1,9 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
 import {AuthenticationService} from "../shared/services/authentication.service";
 import {IUserAccount} from "../shared/models/IUserAccount";
-import {combineLatest, combineLatestAll, forkJoin, Observable, Subscription, switchMap} from "rxjs";
+import {forkJoin, Observable, Subscription, switchMap} from "rxjs";
 import {OffersService} from "../shared/services/offers.service";
 import {IOffer} from "../shared/models/IOffer";
 import {ICategory} from "../shared/models/ICategory";
@@ -17,7 +17,6 @@ import {IProduct} from "../shared/models/IProduct";
 import {IValue} from "../shared/models/IValue";
 import {formatDate} from "@angular/common";
 import {IImage} from "../shared/models/IImage";
-import {IImageRequest} from "../shared/models/IImageRequest";
 
 @Component({
   selector: 'app-new-offer',
@@ -103,7 +102,6 @@ export class NewOfferComponent implements OnInit, OnDestroy {
     let image4 = this.form.value.image4;
 
     if (category && this.activeUser?.id) {
-      let userId = this.activeUser.id;
       let newProduct: IProduct = {
         id: null,
         shortName: shortName,
@@ -135,7 +133,7 @@ export class NewOfferComponent implements OnInit, OnDestroy {
               if(input && this.addedProduct.id) {
                 this.productsService.insertValue(<IValue>{idAttribute: attribute.id, idAttributeCategory: this.currentCategoryType.id, idProduct: this.addedProduct.id,  value: input }).subscribe();
               }
-            };
+            }
             this.offersService.insertOffer(<IOffer>{id: null, userAccount: this.activeUser, product: this.addedProduct, isActive: true, isDeleted: false, dateAndTime: formatDate(new Date(), this.format, this.locale) })
               .subscribe({
                 next: () => {
@@ -150,15 +148,6 @@ export class NewOfferComponent implements OnInit, OnDestroy {
         )
       );
     }
-  }
-
-  selectCategory(value) {
-    this.subs.add(
-      this.offersService.getAll().subscribe(
-        res => {
-          this.processData(res);
-        }
-      ));
   }
 
   optionTrack(index: number, item: string): string {

@@ -16,7 +16,6 @@
           <mat-option
             *ngFor="let option of categories; trackBy: optionTrack"
             [value]="option.id"
-            (click)="selectCategory(form.get('category').value)"
           >
             {{ option.name }}
           </mat-option>
