@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.2.                                                                        
 Backend application - SpringBoot: https://github.com/AndjelinaOrozovic/WebShopIpBackendApp.git                                                                                
 Admin support application - JSP M2: https://github.com/AndjelinaOrozovic/AdminSupportApp.git                                                                                  
-Customer support application -JSP: https://github.com/AndjelinaOrozovic/CustomerSupportApp.git
+Customer support application - JSP: https://github.com/AndjelinaOrozovic/CustomerSupportApp.git
 
 ## Development server
 
